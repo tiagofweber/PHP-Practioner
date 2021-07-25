@@ -1,5 +1,9 @@
 <?php
 
-$greeting = 'Hello, World!';
+require 'functions.php';
+
+$animals = ['dog', 'cat'];
+
+dd($animals);
 
 require 'index.view.php';
