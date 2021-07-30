@@ -1,10 +1,18 @@
 <?php
 
-$config = require 'config.php';
+$app = [];
+
+$app['config'] = require 'config.php';
 
 require 'core/Router.php';
 require 'core/Request.php';
 require 'core/database/Connection.php';
 require 'core/database/QueryBuilder.php';
 
-return new QueryBuilder(Connection::make($config['database']));
+$app['database'] = new QueryBuilder(Connection::make($app['config']['database']));
+
+function dd ($data) {
+    echo '<pre>';
+    die(var_dump($data));
+    echo '</pre>';
+}
