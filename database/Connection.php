@@ -2,12 +2,15 @@
 
 class Connection
 {
-    public static function make()
+    public static function make($config)
     {
         try {
-            $pdo = new PDO('mysql:host=127.0.0.1;dbname=mytodo', 'root', '123456');
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            return $pdo;
+            return new PDO(
+                $config['connection'].';dbname='.$config['name'],
+                $config['username'],
+                $config['password'],
+                $config['options']
+            );
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
